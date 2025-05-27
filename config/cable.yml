@@ -1,0 +1,15 @@
+development:
+  adapter: async
+
+test:
+  adapter: async
+
+production:
+  adapter: redis
+  url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } %>
+  channel_prefix: services_connectors_s4hana_public_cloud_production
+
+dbadmin:
+  adapter: redis
+  url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } %>
+  channel_prefix: services_connectors_s4hana_public_cloud_production
