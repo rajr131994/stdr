@@ -1,0 +1,16 @@
+Go to connector
+cd /opt/blackline/rails/services.connectors.sap
+
+Get sudo access
+sudo su app_dev_bllink_msv
+export $(cat /opt/blackline/rails/services.connectors.sap/env | grep -v '#' | xargs)
+
+A remote run
+bundle exec rake scp:report_redis
+bundle exec rake scp:purge_redis
+bundle exec rake scp:restore_scheduler
+
+A local run :
+rake scp:report_redis
+rake scp:purge_redis
+rake scp:restore_scheduler

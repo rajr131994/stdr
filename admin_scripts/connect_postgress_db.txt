@@ -1,0 +1,15 @@
+Instruction and  quick notes on logging into the development databases from your local machine.
+
+1.	SSH into the dev server
+2.	Open the env file in your app’s directory `sudo cat env`
+3.	Read the database connection values. Example below:
+
+
+5.	Download the .crt and .key files locally and use them along with the credentials in PGAdmin
+a.	Copy the files from their location into your home folder `sudo cp /opt/ssl/link.d00.postgres.client.crt ~/`
+b.	Change the file permissions so you can download the file (DO THIS ONLY IN THE NEW FILE IN YOUR HOME DIRECTORY) example: `sudo chmod 777 link.d00.postgres.client.*`
+c.	Download the files using scp from your laptop
+d.	Delete the files you created on the server once you’ve downloaded them.
+6.	Change the permissions back in your local machine so PG Admin allows you to use the certs `sudo chmod 0600 link.d00.postgres.client.*`
+7.	Connect from your local as shown below
+

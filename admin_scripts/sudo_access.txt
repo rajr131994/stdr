@@ -1,0 +1,23 @@
+# get sudo access  ,you need to have sudo access granted, on the servers :
+ssh g02d10concbe001
+ssh g02d10concbe002
+ssh g02d10concbe003
+
+#commands to linux console to get sudo access
+sudo su app_dev_bllink_msv
+export $(cat /opt/blackline/rails/services.connectors.sap/env | grep -v '#' | xargs)
+
+#Get database access with Rails console
+cd /opt/blackline/rails/services.connectors.sap
+rails c
+
+#You have now access in the public schema
+#command to verify that you are in the public schema
+puts Apartment::Tenant.current
+
+#Example to disable a node on d10
+scp_connection = ScpConnection.find_by(:node => 2, :region_code => 'US', :environment_type => 'DEV')
+scp_connection.update_attribute(:active, false)
+
+#to get access in the tenant schema
+Apartment::Tenant.switch!(<tenant_number>)

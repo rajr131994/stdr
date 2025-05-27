@@ -1,0 +1,8 @@
+#servers d10 to get access with ssh
+ssh g02d10concbe001
+ssh g02d10concbe002
+ssh g02d10concbe003
+
+#Get access to log files on server , sap connector
+cd /opt/blackline/rails/services.connectors.sap/shared/log
+tail -f production.log
