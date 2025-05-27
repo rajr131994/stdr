@@ -1,0 +1,4 @@
+PIDFILE=./resque-scheduler.pid BACKGROUND=yes \
+	rake resque:scheduler
+QUEUE=* rake resque:work
+

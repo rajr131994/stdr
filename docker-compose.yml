@@ -1,0 +1,19 @@
+version: '3.5'
+services:
+  sap:
+    build: .
+    container_name: sap
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    environment:
+      - RAILS_ENV=development
+      - DOCKER_GATEWAY=172.16.0.1
+      - DOCKER_POSTGRES_USERNAME=postgres
+      - USING_DOCKER=true
+    volumes:
+      - .:/myapp
+    ports:
+      - "3004:3000"
+networks:
+  default:
+    external:
+      name: rails_dev_network
